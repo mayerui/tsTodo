@@ -4,18 +4,22 @@ import { Component, OnInit, Inject } from '@angular/core';
     selector: 'app-login',
     template: `
     <div>
-      <input type="text" [(ngModel)]="username" #usernameRef="ngModel" required> 
-      {{usernameRef.errors | json}}
-      <div *ngIf="usernameRef.errors?.required">必填项</div>
+      <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+        <fieldset ngGroup="login">
+            <input type="text" name="username" [(ngModel)]="username" #usernameRef="ngModel" required> 
+            {{usernameRef.errors | json}}
+            <div *ngIf="usernameRef.errors?.required">必填项</div>
 
-      <input type="text" [(ngModel)]="password" #passwordRef="ngModel" required minlength="6"> 
-      {{passwordRef.errors | json}}
-      <div *ngIf="passwordRef.errors?.required">必填项</div>
-      <div *ngIf="passwordRef.errors?.minlength">至少6个字符</div>
+            <input type="text" name="password" [(ngModel)]="password" #passwordRef="ngModel" required minlength="6"> 
+            {{passwordRef.errors | json}}
+            <div *ngIf="passwordRef.errors?.required">必填项</div>
+            <div *ngIf="passwordRef.errors?.minlength">至少6个字符</div>
 
-      <button (click)="onClick()">Login</button>
+            <button type="submit" >Login</button>
+        </fieldset>
+      </form>
     </div>
-  `,//双向绑定
+  `,//[()]双向绑定
     styles: []
 })
 export class LoginComponent implements OnInit {
@@ -28,7 +32,7 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
     }
 
-    onClick()
+    onSubmit()
     {
         console.log('username:'+ this.username+'\tpassword:'+ this.password);
         console.log('auth result:' + this.service.loginCredentials(this.username, this.password));    //依赖注入

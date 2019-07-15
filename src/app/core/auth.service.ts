@@ -7,7 +7,7 @@ export class AuthService {
 
     loginCredentials(username: string, password: string): boolean
     {
-        if (username === 'admin' && password === 'admin')
+        if (username === 'admin' && password === '123456')
             return true;
         return false;
     }
