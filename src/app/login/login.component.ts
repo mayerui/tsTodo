@@ -4,8 +4,8 @@ import { Component, OnInit, Inject } from '@angular/core';
     selector: 'app-login',
     template: `
     <div>
-      <input type="text" [(ngModel)]="username">
-      <input type="text" [(ngModel)]="password">
+      <input type="text" [(ngModel)]="username" #usernameRef="ngModel" required> {{usernameRef.valid}}
+      <input type="text" [(ngModel)]="password" #passwordRef="ngModel" required> {{passwordRef.valid}}
       <button (click)="onClick()">Login</button>
     </div>
   `,//双向绑定
