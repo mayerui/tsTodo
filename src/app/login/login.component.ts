@@ -1,30 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
     selector: 'app-login',
     template: `
     <div>
-      <input #usernameRef type="text">
-      <input #passwordRef type="text">
-      <button (click)="onClick(usernameRef.value, passwordRef.value)">Login</button>
+      <input type="text" [(ngModel)]="username">
+      <input type="text" [(ngModel)]="password">
+      <button (click)="onClick()">Login</button>
     </div>
-    <div>
-        <input #usernameRef type="text">
-        <button (click)="onClick(usernameRef.value)">Login</button>
-    </div>
-  `,
+  `,//双向绑定
     styles: []
 })
 export class LoginComponent implements OnInit {
 
-    constructor() { }
+    username = '';
+    password = '';
+
+    constructor(@Inject('auth') private service) { }    //引入auth依赖注入
 
     ngOnInit() {
     }
 
-    onClick(username, password)
+    onClick()
     {
-        console.log('username:'+username+'\tpassword:'+password);
+        console.log('username:'+ this.username+'\tpassword:'+ this.password);
+        console.log('auth result:' + this.service.loginCredentials(this.username, this.password));    //依赖注入
     }
 }
 
