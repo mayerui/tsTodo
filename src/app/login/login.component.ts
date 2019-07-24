@@ -6,11 +6,13 @@ import { Component, OnInit, Inject } from '@angular/core';
     <div>
       <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
         <fieldset ngModelGroup="login">
-            <input type="text" name="username" [(ngModel)]="username" #usernameRef="ngModel" required> 
+            <input type="text" name="username"  required placeholder="username" value="admin"
+                [(ngModel)]="username" #usernameRef="ngModel"> 
             {{usernameRef.errors | json}}
             <div *ngIf="usernameRef.errors?.required">必填项</div>
 
-            <input type="text" name="password" [(ngModel)]="password" #passwordRef="ngModel" required minlength="6"> 
+            <input type="text" name="password"  required minlength="6" placeholder="password"
+                [(ngModel)]="password" #passwordRef="ngModel"> 
             {{passwordRef.errors | json}}
             <div *ngIf="passwordRef.errors?.required">必填项</div>
             <div *ngIf="passwordRef.errors?.minlength">至少6个字符</div>
