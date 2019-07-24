@@ -8,12 +8,10 @@ import { Component, OnInit, Inject } from '@angular/core';
         <fieldset ngModelGroup="login">
             <input type="text" name="username"  required placeholder="username" value="admin"
                 [(ngModel)]="username" #usernameRef="ngModel"> 
-            {{usernameRef.errors | json}}
             <div *ngIf="usernameRef.errors?.required">必填项</div>
 
-            <input type="text" name="password"  required minlength="6" placeholder="password"
+            <input type="password" name="password"  required minlength="6" placeholder="password"
                 [(ngModel)]="password" #passwordRef="ngModel"> 
-            {{passwordRef.errors | json}}
             <div *ngIf="passwordRef.errors?.required">必填项</div>
             <div *ngIf="passwordRef.errors?.minlength">至少6个字符</div>
 
