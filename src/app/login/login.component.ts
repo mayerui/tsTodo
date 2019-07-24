@@ -5,7 +5,7 @@ import { Component, OnInit, Inject } from '@angular/core';
     template: `
     <div>
       <form #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
-        <fieldset ngGroup="login">
+        <fieldset ngModelGroup="login">
             <input type="text" name="username" [(ngModel)]="username" #usernameRef="ngModel" required> 
             {{usernameRef.errors | json}}
             <div *ngIf="usernameRef.errors?.required">必填项</div>
@@ -32,9 +32,9 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
     }
 
-    onSubmit()
+    onSubmit(formValue)
     {
-        console.log('username:'+ this.username+'\tpassword:'+ this.password);
+        console.log(formValue);
         console.log('auth result:' + this.service.loginCredentials(this.username, this.password));    //依赖注入
     }
 }
