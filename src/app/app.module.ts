@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { TodoComponent } from './todo/todo.component';
 
 import { AuthService } from './core/auth.service';
 
@@ -25,6 +26,10 @@ import { AuthService } from './core/auth.service';
                 {//登陆页面
                     path: 'login',
                     component:LoginComponent
+                },
+                {//todo页面
+                    path: 'todo',
+                    component:TodoComponent
                 }
             ]
         )
@@ -32,7 +37,8 @@ import { AuthService } from './core/auth.service';
 
     declarations: [
         AppComponent,
-        LoginComponent
+        LoginComponent,
+        TodoComponent
     ],
   
     providers: [
