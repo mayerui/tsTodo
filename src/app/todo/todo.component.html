@@ -1,3 +1,6 @@
-<p>
-  todo works!
-</p>
+<div>
+    <input type="text" [(ngModel)]="desc" (keyup.enter)="addTodo()">
+    <ul>
+        <li *ngFor="let todo of todos">{{todo.desc}}</li> <!--利用循环将数组内容显示出来-->
+    </ul>
+</div>
