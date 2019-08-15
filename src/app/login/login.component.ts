@@ -34,8 +34,13 @@ export class LoginComponent implements OnInit {
 
     onSubmit(formValue)
     {
+        var bRet = this.service.loginCredentials(this.username, this.password);
+
         console.log(formValue);
-        console.log('auth result:' + this.service.loginCredentials(this.username, this.password));    //依赖注入
+        console.log('auth result:' + bRet);    //依赖注入
+    
+        if (bRet)
+            window.location.replace("/todo"); //登陆成功，跳转到todo页面
     }
 }
 
