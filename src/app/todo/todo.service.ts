@@ -17,4 +17,14 @@ export class TodoService {
         this.todos.push(todo);
         return this.todos;
     }
+
+    toggleTodoComplete(todo: Todo) {
+        this.todos.filter(todoitem => todoitem.id === todo.id)
+            .pop().completed = !todo.completed;
+    }
+
+    removeTodo(todo: Todo) {
+        this.todos = this.todos.filter(todoitem => todoitem.id !== todo.id);
+        return this.todos;
+    }
 }
