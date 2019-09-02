@@ -6,19 +6,18 @@ import { Todo } from './todo.module';
     selector: 'app-todo',
     templateUrl: './todo.component.html',
     styleUrls: ['./todo.component.css'],
-    providers:[TodoService]
+    providers: [TodoService]
 })
 export class TodoComponent implements OnInit {
     todos: Todo[] = [];
     desc = '';
 
-    constructor(private service:TodoService) {}
+    constructor(private service: TodoService) {}
 
   ngOnInit() {
   }
     
-    addTodo()
-    {
+    addTodo() {
         this.todos = this.service.addTodo(this.desc);
         this.desc = '';
     }

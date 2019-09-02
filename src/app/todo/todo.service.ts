@@ -8,10 +8,8 @@ export class TodoService {
 
     constructor() { }
 
-    addTodo(todoItem: string): Todo[]
-    {
-        let todo =
-        {
+    addTodo(todoItem: string): Todo[] {
+        const todo = {
             id: UUID.UUID(),
             desc: todoItem,
             completed: false
